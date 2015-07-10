@@ -44,7 +44,7 @@ user.save!
 app.save!
 end
 
-50.times do 
+1500.times do 
   event = Event.new(
     name:        Faker::Hacker.ingverb,
     application: Application.all.sample
