@@ -12,9 +12,17 @@
   <div class="container">
     <ul class="nav nav-tabs">
       <li><%= link_to "Blocmetrics", root_path %></li>
+      <li><%#= link_to "Applications", user_path %></li>
       <div class="pull-right user-info">
         <% if current_user %>
+
           Hello <%= (current_user.name || current_user.email) %>!
+
+          <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
+          <span class="glyphicon glyphicon-log-out"></span>
+          <% end %>
+
+
         <% else %>
           <%= link_to "Sign In", new_user_session_path %>
           <%= link_to "Sign Up", new_user_registration_path %>
@@ -38,6 +46,12 @@
            <%= flash[:alert] %>
          </div>
        <% end %>
+
+
+       <%= link_to "Users", user_index_path %>
+       <%#= link_to "Applications", applications_path %>
+
+
 
     <%= yield %>
   </div>

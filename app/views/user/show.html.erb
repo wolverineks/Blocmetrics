@@ -1,0 +1,13 @@
+<h1>User#show</h1>
+<p><%= @user.name %></p>
+
+<p><%= link_to "New Application", new_application_path %></p>
+
+<% @user.applications.each do |application| %>
+  <%= link_to application do %>
+    <p><%= application.name %></p>
+    <p><%= application.url %></p>
+    <p>User:<%= application.user.id %></p>
+    <br>
+  <% end %>
+<% end %>

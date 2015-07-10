@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_for :user
+
+  resources :user, only: [:index, :show]
+
+  resources :applications, except: [:index]
+
+  namespace :api, defaults: { format: :json } do
+    resources :events, only: [:create]
+  end
 
 root :to => "welcome#index"
 
