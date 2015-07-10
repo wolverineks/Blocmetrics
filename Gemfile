@@ -45,6 +45,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'simplecov', :require => false, :group => :test
 
+
+# User GroupDate Gem for grouping info by time
+gem 'groupdate'
+# User ChartKick Gem for chart generation
+gem "chartkick"
 # User FactoryGirl Gem for object creation in tests
 gem 'factory_girl_rails', '~> 4.0'
 # Use NewRelic Gem for app performance analysis
