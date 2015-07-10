@@ -1,25 +1,37 @@
 class API::EventsController < ApplicationController
-  # skip_before_action :verify_authenticity_token
-  # before_action :authenticated?
+  skip_before_action :verify_authenticity_token
+  #before_action :authenticated?
   
-  # def create
-  #   #application = Application.find_by(url: request.env['HTTP_ORIGIN'])
+  before_filter :set_access_control_headers
 
-  #   render json: "Unregistered application", status: :unprocessable_entity unless application
+  def set_access_control_headers
+    headers['Access-Control-Allow-Origin']  = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+    headers['Access-Control-Allow-Headers'] = 'Content-Type'
+  end
 
-  #   event = Event.new(event_params)
-  #   #event.application = application
-  #   if event.save!
-  #     render json: event_params
-  #   else
-  #     render @event.errors, status: :unprocessable_entity
-  #   end   
-  # end
+  def create
+    application = Application.find_by(url: request.env['HTTP_ORIGIN'])
 
-  # private
+    if Application.all.include?(application)
+      @event = Event.new(event_params)
+      @event.application = application
+      
+      if @event.save!
+        render json: @event, status: :created
+      else
+        render @event.errors, status: :unprocessable_entity
+      end
+      
+    else
+      render json: "Unregistered application", status: :unprocessable_entity   
+    end
+  end
 
-  # def event_params
-  #   params.require(:event).permit(:name)
-  # end
+  private
+
+  def event_params
+    params.require(:event).permit(:name)
+  end
 
 end

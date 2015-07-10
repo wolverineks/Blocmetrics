@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  # skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
 
   private
@@ -9,8 +9,8 @@ class ApiController < ApplicationController
   end
 
   def authenticated?
-    authenticate_or_request_with_http_basic {|username, password|
-      @user = User.find_by( username: username, password: password)
+    authenticate_or_request_with_http_basic {|name, password|
+      @user = User.find_by( name: name, password: password)
       @user.present?
     }
   end
