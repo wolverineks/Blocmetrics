@@ -4,48 +4,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 ruby '2.2.0'
 
-group :production do
-  #Use PostGres Gem for Heroku compatibility
-  gem 'pg'
-  gem 'rails_12factor'
-end
-
-group :development do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
-  # Use Better Errors Gem to help with debugging
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
-
-group :development, :test do
-
-  gem 'pry-rails'
-  gem 'pry-nav'
-  gem 'pry-stack_explorer'
-
-  # Use Capybara Gem for more testing
-  gem 'capybara'
-
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '~> 1.3.6'
-
-  #Use RSpec Gem to help with testing
-  gem 'rspec-rails', '~> 3.0'
-end
-
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
-gem 'simplecov', :require => false, :group => :test
-
-
 #gem 'dateslices'
 # User GroupDate Gem for grouping info by time
 gem 'groupdate'
@@ -101,5 +59,45 @@ gem 'jbuilder', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :production do
+  #Use PostGres Gem for Heroku compatibility
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+group :development do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+  # Use Better Errors Gem to help with debugging
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+group :development, :test do
+
+  gem 'pry-rails'
+  gem 'pry-nav'
+  gem 'pry-stack_explorer'
+
+  # Use Capybara Gem for more testing
+  gem 'capybara'
+
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring', '~> 1.3.6'
+
+  #Use RSpec Gem to help with testing
+  gem 'rspec-rails', '~> 3.0'
+end
+
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'simplecov', :require => false, :group => :test
 
 
