@@ -46,8 +46,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simplecov', :require => false, :group => :test
 
 
+#gem 'dateslices'
 # User GroupDate Gem for grouping info by time
-gem 'groupdate'
+ gem 'groupdate'
 # User ChartKick Gem for chart generation
 gem "chartkick"
 # User FactoryGirl Gem for object creation in tests
