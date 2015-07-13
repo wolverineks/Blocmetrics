@@ -39,3 +39,6 @@ bower.json
 
 # Ignore brakeman vulnerabilities report
 brakeman.html
+
+# Ignore SimpleCov Report
+coverage

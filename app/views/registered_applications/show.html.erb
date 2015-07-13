@@ -12,7 +12,7 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <%= pie_chart @registered_application.events.group(:name).count %>
 
-<%= line_chart @application.events.group_by_day(:created_at).count %>
+<%#= line_chart @application.events.group_by_day(:created_at).count %>
 
 <%= link_to "Edit", edit_registered_application_path, class: 'btn btn-success'  %>
 <%= link_to "Delete", registered_application_path, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this application?'}  %>
