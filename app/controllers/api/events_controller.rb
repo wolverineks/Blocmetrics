@@ -11,11 +11,11 @@ class API::EventsController < ApplicationController
   end
 
   def create
-    application = Application.find_by(url: request.env['HTTP_ORIGIN'])
+    registered_application = RegisteredApplication.find_by(url: request.env['HTTP_ORIGIN'])
 
-    if Application.all.include?(application)
+    if RegisteredApplication.all.include?(registered_application)
       @event = Event.new(event_params)
-      @event.application = application
+      @event.registered_application = registered_application
       
       if @event.save!
         render json: @event, status: :created

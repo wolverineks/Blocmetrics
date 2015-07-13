@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :user, only: [:index, :show]
 
-  resources :applications, except: [:index]
+  resources :registered_applications, except: [:index]
 
   namespace :api, defaults: { format: :json } do
     match 'create_event', to: 'events#create', via: [:options]

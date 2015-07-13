@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:confirmable
 
-  has_many :applications, dependent: :destroy
+  has_many :registered_applications, dependent: :destroy
+
+  def admin?
+    role == "admin"
+  end
+
+  def member?
+    role == "member"
+  end
 
 end

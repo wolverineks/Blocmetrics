@@ -11,9 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710045507) do
+ActiveRecord::Schema.define(version: 20150713015620) do
 
-  create_table "applications", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
+    t.text     "name"
+    t.integer  "registered_application_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "events", ["registered_application_id"], name: "index_events_on_registered_application_id"
+
+  create_table "registered_applications", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
     t.integer  "user_id"
@@ -21,16 +30,7 @@ ActiveRecord::Schema.define(version: 20150710045507) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "applications", ["user_id"], name: "index_applications_on_user_id"
-
-  create_table "events", force: :cascade do |t|
-    t.text     "name"
-    t.integer  "application_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "events", ["application_id"], name: "index_events_on_application_id"
+  add_index "registered_applications", ["user_id"], name: "index_registered_applications_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150710045507) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

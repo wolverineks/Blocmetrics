@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 
-  belongs_to :application
+  belongs_to :registered_application
   
-  validates :application_id, presence: true
+  validates :registered_application_id, presence: true
 
 end
